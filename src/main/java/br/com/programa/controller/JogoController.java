@@ -52,12 +52,10 @@ public class JogoController {
 		questao.setDificuldade(NivelDeDificuldade.FACIL);
 		questao.setId(1L);
 		OpcaoDaResposta resposta = new OpcaoDaResposta();
-		resposta.setId(1L);
 		resposta.setResposta("não");
 		resposta.setRespostaCerta(true);
 		questao.getOpcoes().add(resposta);
 		resposta = new OpcaoDaResposta();
-		resposta.setId(2L);
 		resposta.setResposta("sim");
 		resposta.setRespostaCerta(false);
 		questao.getOpcoes().add(resposta);
@@ -68,12 +66,10 @@ public class JogoController {
 		questao.setDificuldade(NivelDeDificuldade.FACIL);
 		questao.setId(1L);
 		resposta = new OpcaoDaResposta();
-		resposta.setId(2L);
 		resposta.setResposta("não");
 		resposta.setRespostaCerta(false);
 		questao.getOpcoes().add(resposta);
-		resposta = new OpcaoDaResposta();
-		resposta.setId(2L);
+		resposta = new OpcaoDaResposta();;
 		resposta.setResposta("sim");
 		resposta.setRespostaCerta(true);
 		questao.getOpcoes().add(resposta);

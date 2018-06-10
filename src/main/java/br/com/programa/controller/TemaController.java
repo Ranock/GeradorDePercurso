@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.programa.dao.Gerente;
 import br.com.programa.dto.TemaDto;
+import br.com.programa.gerente.Gerente;
 import br.com.programa.model.Questao;
 import br.com.programa.model.Tema;
 import io.swagger.annotations.Api;
@@ -25,8 +25,10 @@ public class TemaController {
 	@ApiOperation(value="Cadastra os temas do jogo")
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity CadastrarTema(@RequestBody TemaDto temaDto) {
+		
+		Gerente gerente = Gerente.GetInstance();				
 		Tema tema = AtribuirTema(temaDto);
-		Gerente.getTemaDao().salvar(tema);
+		gerente.getTemaDao().salvar(tema);
 		return new ResponseEntity(HttpStatus.CREATED);		
 	}
 	

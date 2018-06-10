@@ -1,7 +1,6 @@
 package br.com.programa.model;
 
 public class OpcaoDaResposta {
-	private Long id;
 	private String resposta; 
 	private boolean RespostaCerta;
 	
@@ -17,17 +16,12 @@ public class OpcaoDaResposta {
 	public void setRespostaCerta(boolean respostaCerta) {
 		RespostaCerta = respostaCerta;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (RespostaCerta ? 1231 : 1237);
+		result = prime * result + ((resposta == null) ? 0 : resposta.hashCode());
 		return result;
 	}
 	@Override
@@ -39,13 +33,17 @@ public class OpcaoDaResposta {
 		if (getClass() != obj.getClass())
 			return false;
 		OpcaoDaResposta other = (OpcaoDaResposta) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (RespostaCerta != other.RespostaCerta)
+			return false;
+		if (resposta == null) {
+			if (other.resposta != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!resposta.equals(other.resposta))
 			return false;
 		return true;
 	}
+
+	
 	
 	
 	

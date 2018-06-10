@@ -3,16 +3,19 @@ package br.com.programa.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.programa.gerente.Gerente;
 import br.com.programa.model.Questao;
 import br.com.programa.model.Tema;
 
 public class QuestoesDao implements DaoGenerico{
 	private List<Questao> questoes;
 	private Long id;
+	private Gerente gerente;
 	
 	public QuestoesDao() {
 		questoes = new ArrayList<Questao>();
 		id = 0L;
+		gerente = Gerente.GetInstance();
 	}
 	
 	@Override
@@ -21,9 +24,9 @@ public class QuestoesDao implements DaoGenerico{
 		saida = false;
 		Questao quest = (Questao) questao; 
 		quest.setId(id + 1);
-		Tema tema = (Tema) Gerente.getTemaDao().buscar(quest.getTema().getId());
+		Tema tema = (Tema) gerente.getTemaDao().buscar(quest.getTema().getId());
 		tema.getQuestoes().add(quest);
-		Gerente.getTemaDao().Alterar(tema);
+		gerente.getTemaDao().Alterar(tema);
 		if ( !questoes.contains(quest)) {			
 			questoes.add(quest);
 			saida = true;
