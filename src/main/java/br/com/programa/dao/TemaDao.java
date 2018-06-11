@@ -3,9 +3,9 @@ package br.com.programa.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.programa.model.Tema;
+import br.com.programa.model.classes.Tema;
 
-public class TemaDao implements DaoGenerico{
+public class TemaDao implements DaoGenerico<Tema>{
 	
 	private List<Tema> temas;
 	private Long id;
@@ -14,7 +14,7 @@ public class TemaDao implements DaoGenerico{
 		id = 0L;
 	}
 	
-	public boolean salvar(Object tema) {
+	public boolean salvar(Tema tema) {
 		boolean saida;
 		saida = false;
 		Tema t = (Tema) tema;
@@ -41,7 +41,7 @@ public class TemaDao implements DaoGenerico{
 	}
 
 	@Override
-	public Object buscar(Long id) {
+	public Tema buscar(Long id) {
 		for (Tema tema : temas) {
 			if (tema.getId() == id)
 				return tema;

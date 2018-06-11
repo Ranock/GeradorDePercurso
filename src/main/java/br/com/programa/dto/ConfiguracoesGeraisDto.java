@@ -2,7 +2,7 @@ package br.com.programa.dto;
 
 import java.util.List;
 
-import br.com.programa.enumerados.Cor;
+import br.com.programa.model.enumerados.Cor;
 
 public class ConfiguracoesGeraisDto {
 

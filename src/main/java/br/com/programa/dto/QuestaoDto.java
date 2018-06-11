@@ -2,7 +2,7 @@ package br.com.programa.dto;
 
 import java.util.List;
 
-import br.com.programa.model.OpcaoDaResposta;
+import br.com.programa.model.classes.OpcaoDaResposta;
 
 public class QuestaoDto {
 	private Integer dificuldade;

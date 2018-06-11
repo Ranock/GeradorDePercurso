@@ -9,39 +9,42 @@ import org.springframework.asm.Opcodes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.programa.enumerados.Cor;
-import br.com.programa.enumerados.NivelDeDificuldade;
-import br.com.programa.enumerados.TipoBonus;
-import br.com.programa.model.Bonus;
-import br.com.programa.model.Casa;
-import br.com.programa.model.CasaBonus;
-import br.com.programa.model.ConfiguracoesGerais;
-import br.com.programa.model.Jogo;
-import br.com.programa.model.OpcaoDaResposta;
-import br.com.programa.model.ParametrosJogo;
-import br.com.programa.model.Questao;
-import br.com.programa.model.Tema;
+import br.com.programa.model.classes.Avatar;
+import br.com.programa.model.classes.Bonus;
+import br.com.programa.model.classes.Casa;
+import br.com.programa.model.classes.CasaBonus;
+import br.com.programa.model.classes.ConfiguracoesGerais;
+import br.com.programa.model.classes.Jogo;
+import br.com.programa.model.classes.OpcaoDaResposta;
+import br.com.programa.model.classes.ParametrosJogo;
+import br.com.programa.model.classes.Questao;
+import br.com.programa.model.classes.Tema;
+import br.com.programa.model.enumerados.Cor;
+import br.com.programa.model.enumerados.NivelDeDificuldade;
+import br.com.programa.model.enumerados.TipoBonus;
+import br.com.programa.service.JogoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @Api(value="API do Jogo")
 @RestController
 @RequestMapping(value="/programa/jogo")
+@CrossOrigin("*")
 public class JogoController {
 
-	@ApiOperation(value="Cadastra realiza a requisição dos jogos passando o parametro a ser considerado na geração")
+	@ApiOperation(value="Realiza a criação dos jogos passando o parametro a ser considerado na geração")
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity retornarJogo(@RequestBody ParametrosJogo parametros) {
-		Jogo jogo = jogoAleatorio();
+		Jogo jogo = jogoAleatorio(parametros);
 		Map<Integer, Object> retorno = new HashMap<Integer, Object>();
 		retorno.put(0, jogo);
 		retorno.put(1, config());
-		retorno.put(3, questoes());
 		return new ResponseEntity<Map<Integer, Object>>(retorno,HttpStatus.OK );
 	}
 	
@@ -86,36 +89,34 @@ public class JogoController {
 		return conf;
 		
 	}
-	private Jogo jogoAleatorio() {
+	private Jogo jogoAleatorio(ParametrosJogo parametros) {
+		JogoService jogoService = new JogoService();
+		//return jogoService.geraJogo(parametros);
 		Jogo jogo = new Jogo();
-		
+		Avatar avatar  = new Avatar();
+		avatar.setCor(Cor.AZUL);
+		avatar.setId(1L);
+		List<Avatar> avatares = new ArrayList<Avatar>();
+		avatares.add(avatar);
+		jogo.setAvatares( avatares);
 		Casa casa = new Casa();
-		casa.setId(1L);
-		casa.setNumero(1);
-		jogo.getCasa().add(casa);
-		casa = new Casa();
-		casa.setId(2L);
-		casa.setNumero(2);
-		jogo.getCasa().add(casa);
-		CasaBonus casab = new CasaBonus();
-		casab.setId(3L);
-		casab.setNumero(3);
-		casab.setBonus(new Bonus().setTipoBonus(TipoBonus.PERGUNTA_BONUS));
-		
-		jogo.getCasa().add(casab);
-		casab = new CasaBonus();
-		casab.setId(4L);
-		casab.setNumero(4);
-		casab.setBonus(new Bonus().setTipoBonus(TipoBonus.AVANCA_CASA));
-		jogo.getCasa().add(casab);
-		Tema tema = new Tema();
-		tema.setNome("Tema inutil");
-		
-		
-		jogo.setId(1L);
-		jogo.setNome("Jogo inutil");
-		jogo.setTema(tema);
-		return jogo;
-	}
-	
+
+			casa.setNumero(1);
+				jogo.getCasa().add(casa);
+				casa = new Casa();
+				casa.setNumero(2);
+				jogo.getCasa().add(casa);
+				CasaBonus casab = new CasaBonus();
+				casab.setNumero(3);
+				casab.setBonus(new Bonus().setTipoBonus(TipoBonus.PERGUNTA_BONUS));
+				
+				jogo.getCasa().add(casab);
+				casab = new CasaBonus();
+				casab.setNumero(4);
+				casab.setBonus(new Bonus().setTipoBonus(TipoBonus.AVANCA_CASA));
+				jogo.getCasa().add(casab);
+				jogo.setQuestoes(questoes());
+				jogo.setTema(new Tema());
+				return jogo;
+	}	
 }

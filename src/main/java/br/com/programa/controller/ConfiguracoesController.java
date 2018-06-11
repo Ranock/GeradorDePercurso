@@ -6,21 +6,23 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.programa.dto.ConfiguracoesGeraisDto;
-import br.com.programa.enumerados.Cor;
-import br.com.programa.gerente.Gerente;
-import br.com.programa.model.ConfiguracoesGerais;
+import br.com.programa.model.classes.ConfiguracoesGerais;
+import br.com.programa.model.enumerados.Cor;
+import br.com.programa.model.gerente.Gerente;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @Api(value="API com Configuracoes")
 @RestController
 @RequestMapping("/programa/config")
+@CrossOrigin("*")
 public class ConfiguracoesController {
 
 	@ApiOperation(value="Cadastra as Configurações gerais")

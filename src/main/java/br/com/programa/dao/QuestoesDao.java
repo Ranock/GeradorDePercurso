@@ -3,11 +3,11 @@ package br.com.programa.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.programa.gerente.Gerente;
-import br.com.programa.model.Questao;
-import br.com.programa.model.Tema;
+import br.com.programa.model.classes.Questao;
+import br.com.programa.model.classes.Tema;
+import br.com.programa.model.gerente.Gerente;
 
-public class QuestoesDao implements DaoGenerico{
+public class QuestoesDao implements DaoGenerico<Questao>{
 	private List<Questao> questoes;
 	private Long id;
 	private Gerente gerente;
@@ -19,7 +19,7 @@ public class QuestoesDao implements DaoGenerico{
 	}
 	
 	@Override
-	public boolean salvar(Object questao) {
+	public boolean salvar(Questao questao) {
 		boolean saida;
 		saida = false;
 		Questao quest = (Questao) questao; 
