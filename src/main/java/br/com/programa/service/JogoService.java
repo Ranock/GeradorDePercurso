@@ -22,6 +22,8 @@ public class JogoService {
 		Integer quantidadeCasas = parametros.getQuantidadeCasas();
 		Integer quantidadeJogadores = parametros.getQuantidadeJogador();
 		Tema tema = (Tema) gerente.getTemaDao().buscar(parametros.getTema());
+		if (tema == null) 
+			tema = new Tema();
 		AvatarFactory af = AvatarFactory.getAvatarFactory();
 		ListaCasasFactory cf = ListaCasasFactory.getListaCasasFactory(gerente.GetConfiguracoesGerais().getMensagensUltimaCasa(), quantidadeCasas);
 		QuestoesFactory qf = QuestoesFactory.getQuestoesFactory();

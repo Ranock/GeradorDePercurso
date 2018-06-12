@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.programa.model.enumerados.NivelDeDificuldade;
-import br.com.programa.model.enumerados.TipoCasa;
 
 public class Questao {
 	private Long id;

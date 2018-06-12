@@ -18,7 +18,7 @@ public class CasaBonusFactory {
 		casaBonus.setTipo(TipoCasa.CASA_BONUS);
 		Bonus bonus = new Bonus();
 		
-		tipoBonus = rand.nextInt(1); 
+		tipoBonus = rand.nextInt(2); 
 		bonus.setTipoBonus(TipoBonus.values()[tipoBonus]);
 		casaBonus.setBonus(bonus);
 		return casaBonus;

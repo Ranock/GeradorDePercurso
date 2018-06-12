@@ -38,6 +38,12 @@ public class ConfiguracoesController {
 		}
 		
 	}
+	
+	@ApiOperation(value="Retorna as Cores")
+	@RequestMapping(value="/cores", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity retornaCores() {
+		return new ResponseEntity(Cor.values(), HttpStatus.OK);
+	}
 
 	private ConfiguracoesGerais atribuirConf(ConfiguracoesGeraisDto configDto) {
 		ConfiguracoesGerais config = new ConfiguracoesGerais();

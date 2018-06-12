@@ -2,6 +2,7 @@ package br.com.programa.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import br.com.programa.dto.TemaDto;
 import br.com.programa.model.classes.Questao;
 import br.com.programa.model.classes.Tema;
 import br.com.programa.model.gerente.Gerente;
+import br.com.programa.service.TemaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -23,23 +25,26 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping(value="/programa/tema")
 @CrossOrigin("*")
 public class TemaController {
+	@Autowired
+	private TemaService temaservice;
 
 	@ApiOperation(value="Cadastra os temas do jogo")
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity CadastrarTema(@RequestBody TemaDto temaDto) {
-		
-		Gerente gerente = Gerente.GetInstance();				
+						
 		Tema tema = AtribuirTema(temaDto);
-		gerente.getTemaDao().salvar(tema);
-		return new ResponseEntity(HttpStatus.CREATED);		
+		if(temaservice.salvaTema(tema)) 
+			return new ResponseEntity(HttpStatus.CREATED);
+		else
+			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+				
 	}
 	
 	@ApiOperation(value="Retorna os temas do jogo")
-	@RequestMapping(method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method=RequestMethod.GET, value="/temas", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Tema>> RetornaTemas(){
-		Gerente gerente = Gerente.GetInstance();
-		List<Tema> tema =  gerente.getTemaDao().BuscarTodos();
-		return new ResponseEntity<List<Tema>>(tema, HttpStatus.OK);
+		List<Tema> temas = temaservice.retornaTemas();
+		return new ResponseEntity<List<Tema>>(temas, HttpStatus.OK);
 	}
 
 	private Tema AtribuirTema(TemaDto temaDto) {

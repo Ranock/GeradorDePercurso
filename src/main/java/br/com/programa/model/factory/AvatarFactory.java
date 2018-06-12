@@ -17,7 +17,7 @@ public class AvatarFactory {
 		List<Avatar> avatares = new ArrayList<Avatar>();
 		Avatar avatar;
 		Long id;
-		for (Integer i = 0;  i <= quantidade; i++ ) {
+		for (Integer i = 0;  i <= quantidade-1; i++ ) {
 			avatar = new Avatar();
 			avatar.setCor(cores.get(i));
 			id = Long.valueOf(i);

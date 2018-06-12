@@ -22,11 +22,14 @@ public class QuestoesDao implements DaoGenerico<Questao>{
 	public boolean salvar(Questao questao) {
 		boolean saida;
 		saida = false;
-		Questao quest = (Questao) questao; 
-		quest.setId(id + 1);
-		Tema tema = (Tema) gerente.getTemaDao().buscar(quest.getTema().getId());
-		tema.getQuestoes().add(quest);
-		gerente.getTemaDao().Alterar(tema);
+		Questao quest = (Questao) questao;
+		Tema tema;
+		quest.setId(id++ + 1);
+		if (questao.getTema() != null) {
+			 tema = (Tema) gerente.getTemaDao().buscar(quest.getTema().getId());
+			 tema.getQuestoes().add(quest);
+			 gerente.getTemaDao().Alterar(tema);
+		}
 		if ( !questoes.contains(quest)) {			
 			questoes.add(quest);
 			saida = true;

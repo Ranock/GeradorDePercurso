@@ -3,6 +3,8 @@ package br.com.programa.model.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Tema {
 	private Long id;
 	private String nome;
@@ -24,7 +26,7 @@ public class Tema {
 		this.id = id;
 	}
 	
-
+	@JsonIgnore
 	public List<Questao> getQuestoes() {
 		if (questoes == null)
 			questoes = new ArrayList<Questao>();

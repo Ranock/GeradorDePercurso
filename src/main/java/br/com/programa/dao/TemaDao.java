@@ -18,8 +18,8 @@ public class TemaDao implements DaoGenerico<Tema>{
 		boolean saida;
 		saida = false;
 		Tema t = (Tema) tema;
-		t.setId(id + 1);
-		if (!(temas.contains(t))) {
+		t.setId(id++ + 1);
+		if (!(temas.contains(t)) && t.getNome() != null) {
 			temas.add(t);
 			saida = true;
 			
@@ -57,7 +57,6 @@ public class TemaDao implements DaoGenerico<Tema>{
 		boolean saida;
 		saida = false;
 		Tema t = (Tema) tema;
-		t.setId(id + 1);
 		if ((temas.contains(t))) {
 			temas.remove(t);
 			temas.add(t);
