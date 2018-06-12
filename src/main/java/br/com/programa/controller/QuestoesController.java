@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.programa.dto.QuestaoDto;
 import br.com.programa.model.classes.Questao;
+import br.com.programa.model.enumerados.Cor;
 import br.com.programa.model.enumerados.NivelDeDificuldade;
 import br.com.programa.model.gerente.Gerente;
 import br.com.programa.service.QuestaoService;
@@ -34,6 +35,12 @@ public class QuestoesController {
 			return new ResponseEntity(HttpStatus.OK);
 		else
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+	}
+	
+	@ApiOperation(value="Retorna as Dificuldades")
+	@RequestMapping(value="/dificuldades", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity retornaDificuldades() {
+		return new ResponseEntity(NivelDeDificuldade.values(), HttpStatus.OK);
 	}
 
 	private Questao AtribuirQuestao(QuestaoDto questaoDto) {
