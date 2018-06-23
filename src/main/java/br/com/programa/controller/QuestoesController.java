@@ -32,7 +32,7 @@ public class QuestoesController {
 	public ResponseEntity salvarQuestao(@RequestBody QuestaoDto questaoDto) {
 		Questao questao = AtribuirQuestao(questaoDto);
 		if(questaoservice.salvarQuestao(questao))
-			return new ResponseEntity(HttpStatus.OK);
+			return new ResponseEntity(HttpStatus.CREATED);
 		else
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
 	}
