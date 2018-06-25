@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: GeradorDePercurso
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Hugo
+Built-By: kelvi
 Implementation-Vendor-Id: GeradorDePercurso
-Build-Jdk: 1.8.0_171
+Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/br.com.Gerad
  orDePercurso/
 Created-By: Maven Integration for Eclipse
