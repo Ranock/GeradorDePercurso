@@ -3,7 +3,7 @@ package br.com.programa.service;
 import org.springframework.stereotype.Service;
 
 import br.com.programa.model.classes.Questao;
-import br.com.programa.model.gerente.Gerente;
+import br.com.programa.model.singleton.Gerente;
 
 @Service
 public class QuestaoService {

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.programa.dto.ConfiguracoesGeraisDto;
 import br.com.programa.model.classes.ConfiguracoesGerais;
 import br.com.programa.model.enumerados.Cor;
-import br.com.programa.model.gerente.Gerente;
+import br.com.programa.model.singleton.Gerente;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

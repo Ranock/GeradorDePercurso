@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.programa.model.classes.Questao;
 import br.com.programa.model.classes.Tema;
-import br.com.programa.model.gerente.Gerente;
+import br.com.programa.model.singleton.Gerente;
 
 public class QuestoesFactory {
 	public static QuestoesFactory getQuestoesFactory() {

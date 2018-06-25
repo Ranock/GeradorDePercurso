@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.programa.dto.TemaDto;
 import br.com.programa.model.classes.Questao;
 import br.com.programa.model.classes.Tema;
-import br.com.programa.model.gerente.Gerente;
+import br.com.programa.model.singleton.Gerente;
 import br.com.programa.service.TemaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

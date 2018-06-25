@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.programa.dto.QuestaoDto;
 import br.com.programa.model.classes.Questao;
 import br.com.programa.model.enumerados.NivelDeDificuldade;
-import br.com.programa.model.gerente.Gerente;
+import br.com.programa.model.singleton.Gerente;
 import br.com.programa.service.QuestaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,7 +31,7 @@ public class QuestoesController {
 	public ResponseEntity salvarQuestao(@RequestBody QuestaoDto questaoDto) {
 		Questao questao = AtribuirQuestao(questaoDto);
 		if(questaoservice.salvarQuestao(questao))
-			return new ResponseEntity(HttpStatus.OK);
+			return new ResponseEntity(HttpStatus.CREATED);
 		else
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
 	}

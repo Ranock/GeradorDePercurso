@@ -7,10 +7,12 @@ import br.com.programa.model.classes.Casa;
 import br.com.programa.model.classes.CasaBonus;
 import br.com.programa.model.enumerados.TipoBonus;
 import br.com.programa.model.enumerados.TipoCasa;
+import br.com.programa.model.interfaces.ICasa;
 
-public class CasaBonusFactory {
-	
-	public Casa CriaCasaBonus(int numero) {
+public class CasaBonusFactory implements ICasa {
+
+	@Override
+	public Casa criaCasa(Integer numero) {
 		CasaBonus casaBonus = new CasaBonus();
 		Integer tipoBonus;
 		Random rand = new Random();
@@ -22,6 +24,12 @@ public class CasaBonusFactory {
 		bonus.setTipoBonus(TipoBonus.values()[tipoBonus]);
 		casaBonus.setBonus(bonus);
 		return casaBonus;
+	}
+
+	@Override
+	public Casa criaCasa(Integer numero, String mensagem) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -28,7 +28,7 @@ import br.com.programa.model.classes.Tema;
 import br.com.programa.model.enumerados.Cor;
 import br.com.programa.model.enumerados.NivelDeDificuldade;
 import br.com.programa.model.enumerados.TipoBonus;
-import br.com.programa.model.gerente.Gerente;
+import br.com.programa.model.singleton.Gerente;
 import br.com.programa.service.JogoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

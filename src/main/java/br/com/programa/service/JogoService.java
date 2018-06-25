@@ -9,11 +9,10 @@ import br.com.programa.model.classes.Jogo;
 import br.com.programa.model.classes.ParametrosJogo;
 import br.com.programa.model.classes.Questao;
 import br.com.programa.model.classes.Tema;
+import br.com.programa.model.facade.ListaCasasFacade;
 import br.com.programa.model.factory.AvatarFactory;
-import br.com.programa.model.factory.CasaFactory;
-import br.com.programa.model.factory.ListaCasasFactory;
 import br.com.programa.model.factory.QuestoesFactory;
-import br.com.programa.model.gerente.Gerente;
+import br.com.programa.model.singleton.Gerente;
 
 public class JogoService {
 	
@@ -25,7 +24,7 @@ public class JogoService {
 		if (tema == null) 
 			tema = new Tema();
 		AvatarFactory af = AvatarFactory.getAvatarFactory();
-		ListaCasasFactory cf = ListaCasasFactory.getListaCasasFactory(gerente.GetConfiguracoesGerais().getMensagensUltimaCasa(), quantidadeCasas);
+		ListaCasasFacade cf = new ListaCasasFacade(gerente.GetConfiguracoesGerais().getMensagensUltimaCasa(), quantidadeCasas);
 		QuestoesFactory qf = QuestoesFactory.getQuestoesFactory();
 		List<Avatar> avatarList;
 		List<Casa> casas =  cf.getListaCasas(3, 2, 2);

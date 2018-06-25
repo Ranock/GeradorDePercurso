@@ -1,4 +1,4 @@
-package br.com.programa.model.gerente;
+package br.com.programa.model.singleton;
 
 import br.com.programa.dao.QuestoesDao;
 import br.com.programa.dao.TemaDao;
